@@ -1,0 +1,62 @@
+<form
+  [formGroup]="updateForm"
+  class="container mb-4 mt-4"
+  (ngSubmit)="update()"
+>
+  <h5>Add User</h5>
+  <div class="mb-3">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="name"
+      />
+      <div *ngIf="updateForm.get('name')?.errors">
+        <div
+          class="text-danger"
+          *ngIf="updateForm.get('name')?.errors?.['required']"
+        >
+          Name is Required
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="username" class="form-label">UserName</label>
+      <input
+        type="text"
+        class="form-control"
+        id="username"
+        formControlName="username"
+      />
+      <div *ngIf="updateForm.get('username')?.errors">
+        <div
+          class="text-danger"
+          *ngIf="updateForm.get('username')?.errors?.['required']"
+        >
+          UserName is Required
+        </div>
+      </div>
+    </div>
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      formControlName="email"
+    />
+    <div *ngIf="updateForm.get('email')?.errors">
+      <div
+        class="text-danger"
+        *ngIf="updateForm.get('email')?.errors?.['required']"
+      >
+        Email is Required
+      </div>
+    </div>
+  </div>
+  <button type="submit" [disabled]="!updateForm.valid" class="btn btn-primary">
+    Update
+  </button>
+</form>

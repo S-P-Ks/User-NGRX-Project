@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  <button class="btn btn-primary" [routerLink]="['/users/add']">
+    Add User
+  </button>
+  <div class="col-md-12">
+    <div
+      class="card float-start"
+      *ngFor="let user of Users"
+      style="width: 18rem"
+    >
+      <div class="card-body">
+        <h1>{{ user.id }}</h1>
+        <h5 class="card-title">{{ user.name }}</h5>
+        <p class="card-text">
+          {{ user.email }}
+        </p>
+        <button
+          (updatedUser)="getUsers()"
+          class="btn btn-success"
+          [routerLink]="['/users/edit', user.id]"
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <router-outlet></router-outlet>
+</div>
